@@ -23,30 +23,30 @@ app.use(bodyParser.json());
 app.use(express.static("client/build"));
 app.use(routes);
 
-// Set up promises with mongoose
-mongoose.Promise = global.Promise;
+// // Set up promises with mongoose
+// mongoose.Promise = global.Promise;
 
-// "mongodb://heroku_cwf2cqkx:8vpi8pekalrvhlae96mahc4ktq@ds153494.mlab.com:53494/heroku_cwf2cqkx"
-// process.env.MONGODB_URI ||
-const mongoConnect =  'mongodb://localhost/nyt-react-app'
-// Connect to the Mongo DB
-mongoose.connect(
-  mongoConnect , {
-    useMongoClient: true
-  }
-);
+// // "mongodb://heroku_cwf2cqkx:8vpi8pekalrvhlae96mahc4ktq@ds153494.mlab.com:53494/heroku_cwf2cqkx"
+// // process.env.MONGODB_URI ||
+// const mongoConnect =  'mongodb://localhost/nyt-react-app'
+// // Connect to the Mongo DB
+// mongoose.connect(
+//   mongoConnect , {
+//     useMongoClient: true
+//   }
+// );
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-// Show any mongoose errors
-db.on("error", function (error) {
-  console.log("Mongoose Error: ", error);
-});
+// // Show any mongoose errors
+// db.on("error", function (error) {
+//   console.log("Mongoose Error: ", error);
+// });
 
-// Once logged in to the db through mongoose, log a success message
-db.once("open", function () {
-  console.log(`Mongoose connection to ${mongoConnect} successful.`);
-});
+// // Once logged in to the db through mongoose, log a success message
+// db.once("open", function () {
+//   console.log(`Mongoose connection to ${mongoConnect} successful.`);
+// });
 
 // Send every request to the React app
 // Define any API routes before this runs

@@ -1,0 +1,14 @@
+.MapProper{
+  height: 100%;
+  width: 100%;
+  background-image: url('../../assets/images/basemap.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: contain;
+  cursor: zoom-in; 
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* z-index: 1; */
+}

@@ -1,0 +1,8 @@
+.ResoList{
+  position: absolute;
+  top: 20%;
+  left: 0px;
+  height: 40px;
+  width: 20px;
+  border: 3px solid white;
+}
