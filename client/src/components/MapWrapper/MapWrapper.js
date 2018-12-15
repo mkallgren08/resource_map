@@ -1,9 +1,9 @@
 import React from "react";
 import "./MapWrapper.css";
 
-const MapWrapper = ({ children }) =>
-  <div className="MapWrapper">
-    {children}
+const MapWrapper = props =>
+  <div className= {props.zoom ? ("MapWrapperZoom") :("MapWrapperDef")}>
+    {props.children}
   </div>;
 
 export default MapWrapper;

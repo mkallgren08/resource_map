@@ -1,4 +1,4 @@
-.MapProper{
+.MapProperDef{
   height: 100%;
   width: 100%;
   background-image: url('../../assets/images/basemap.jpg');
@@ -11,4 +11,19 @@
   top: 0px;
   left: 0px;
   /* z-index: 1; */
+}
+
+.MapProperZoom{
+  height: 1875px;
+  width: 1880px;
+  background-image: url('../../assets/images/basemap.jpg');
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  /* background-position: center; */
+  /* background-size:cover; */
+  cursor: zoom-in; 
+  z-index: 1;
+  /* position: absolute;
+  top: 0px;
+  left: 0px; */
 }

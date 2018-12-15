@@ -1,7 +1,15 @@
-.MapWrapper{
+.MapWrapperDef{
   background: rgba(0, 0, 0, 0.9);
   height: 100vh;
   width: 100vw;
+  border: 20px solid black;
+  position: relative;
+}
+
+.MapWrapperZoom{
+  background: rgba(0, 0, 0, 0.9);
+  height: 1915px;
+  width: 1920px;
   border: 20px solid black;
   position: relative;
 }
