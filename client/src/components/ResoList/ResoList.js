@@ -7,8 +7,7 @@ export const ResoList = props =>
     
     <div className="noZoom resource-header">
       <h2 className="noZoom">{props.text}
-        <div className= "noZoom overlay"></div> 
-        <button className="noZoom highIndex" onClick={props.onClick} >
+        <button className="noZoom collapseBtn" onClick={props.onClick} >
           <FontAwesomeIcon 
             className= "noZoom faIcon" 
             icon="angle-double-left"

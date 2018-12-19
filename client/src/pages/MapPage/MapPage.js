@@ -71,7 +71,10 @@ class MapPage extends Component {
     let typeOfTarget = typeof targetClass;
     console.log(typeOfTarget)
     if (typeOfTarget === 'string') {
-      if (targetClass.indexOf('noZoom') === -1) {
+      if (targetClass.indexOf('collapse') > -1){
+        this.collapseMenu(this.state.collapsed)
+      }
+      else if (targetClass.indexOf('noZoom') === -1) {
         let zoomedIn = this.state.zoomedIn;
         console.log(zoomedIn);
         if (zoomedIn) { zoomedIn = false; }
@@ -81,12 +84,10 @@ class MapPage extends Component {
     } else if (typeOfTarget === 'object'){
       this.collapseMenu(this.state.collapsed);
     }
-
-
-
   }
 
-  collapseMenu = (collpased) => {
+  collapseMenu = (collapsed) => {
+    console.log(collapsed)
     console.log("Collapse function called")
   }
 
@@ -104,7 +105,7 @@ class MapPage extends Component {
               {maps.map(item =>
                 item.show ? <MapLayer key={item.name} zoom={this.state.zoomedIn} map={item} ></MapLayer> : <div key={item.name}></div>
               )}
-              <ResoList text={this.state.text} onClick={this.collpaseMenu}>
+              <ResoList text={this.state.text} onClick={this.collpaseMenu} collpased={this.state.collapsed}>
                 {maps.map(item =>
                   <Checkbox key={item.name} onChange={this.handleChange} type='checkbox' checked={item.checked} name={item.name} />
                 )}
