@@ -1,5 +1,5 @@
 .ResoList{
-  position: absolute;
+  position: fixed;
   top: 20%;
   left: 0px;
   /* height: 40px;
@@ -8,7 +8,7 @@
   border: 3px solid white;
   background-color: rgba(200,200,200,1);
   cursor: context-menu !important;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .faIcon{
@@ -16,4 +16,14 @@
   padding: 3px;
   border: 1px solid rgba(102, 102, 102, 0.397);
   cursor: pointer;
+}
+
+.overlay{
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }

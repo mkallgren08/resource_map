@@ -5,7 +5,8 @@ import MapWrapper from "../../components/MapWrapper";
 import { MapProper, MapLayer } from "../../components/Maps";
 import { ResoList } from "../../components/ResoList";
 import oil from "./../../assets/images/resmap-oil.png";
-import blackTi from "../../assets/images/resmap-blackTi.png"
+import blackTi from "../../assets/images/resmap-blackTi.png";
+import acid from "../../assets/images/resmap-acid.png";
 
 class MapPage extends Component {
   state = {
@@ -13,9 +14,11 @@ class MapPage extends Component {
     text: "Resources",
     width: 0,
     height: 0,
+    collapsed: false,
     maps: [
       { name: "Oil", bckgrnd: oil, layer: 1, show: true, checked: true },
-      { name: "Black Titanium", bckgrnd: blackTi, layer: 2, show: true, checked: true }
+      { name: "Black Titanium", bckgrnd: blackTi, layer: 2, show: true, checked: true },
+      { name: "Acid", bckgrnd: acid, layer: 3, show: true, checked: true }
     ]
   };
 
@@ -75,14 +78,16 @@ class MapPage extends Component {
         else { zoomedIn = true; }
         this.setState({ zoomedIn: zoomedIn })
       }
+    } else if (typeOfTarget === 'object'){
+      this.collapseMenu(this.state.collapsed);
     }
 
 
 
   }
 
-  collapseMenu = () => {
-
+  collapseMenu = (collpased) => {
+    console.log("Collapse function called")
   }
 
   render() {
@@ -99,7 +104,7 @@ class MapPage extends Component {
               {maps.map(item =>
                 item.show ? <MapLayer key={item.name} zoom={this.state.zoomedIn} map={item} ></MapLayer> : <div key={item.name}></div>
               )}
-              <ResoList text={this.state.text} zoom={this.state.zoomedIn} onClick={this.collpaseMenu}>
+              <ResoList text={this.state.text} onClick={this.collpaseMenu}>
                 {maps.map(item =>
                   <Checkbox key={item.name} onChange={this.handleChange} type='checkbox' checked={item.checked} name={item.name} />
                 )}
