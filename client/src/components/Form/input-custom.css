@@ -2,3 +2,13 @@
   height: auto !important;
   display: inline-block
 }
+
+.checkbox-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.checkbox-group > input {
+  margin: auto 10px;
+}

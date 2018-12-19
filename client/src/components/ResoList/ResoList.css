@@ -4,8 +4,16 @@
   left: 0px;
   /* height: 40px;
   width: 20px; */
+  padding: 10px;
   border: 3px solid white;
   background-color: rgba(200,200,200,1);
   cursor: context-menu !important;
   z-index: 1000;
+}
+
+.faIcon{
+  border-radius: 5px;
+  padding: 3px;
+  border: 1px solid rgba(102, 102, 102, 0.397);
+  cursor: pointer;
 }

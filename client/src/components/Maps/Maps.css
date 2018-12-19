@@ -4,8 +4,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-size: contain;
-  cursor: zoom-in; 
+  background-size: contain; 
   position: absolute;
   top: 0px;
   left: 0px;
@@ -15,7 +14,6 @@
   height: 1875px;
   width: 1880px;
   background-repeat: no-repeat;
-  cursor: zoom-in; 
   position: absolute;
   top: 0px;
   left: 0px;

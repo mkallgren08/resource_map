@@ -1,22 +1,21 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
-import DeleteBtn from "../../components/DeleteBtn";
-import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
+import { Row, Container } from "../../components/Grid";
 import { Checkbox } from "../../components/Form";
 import MapWrapper from "../../components/MapWrapper";
 import { MapProper, MapLayer } from "../../components/Maps";
 import { ResoList } from "../../components/ResoList";
 import oil from "./../../assets/images/resmap-oil.png";
+import blackTi from "../../assets/images/resmap-blackTi.png"
 
 class MapPage extends Component {
   state = {
     zoomedIn: true,
-    text: "OH HAI",
+    text: "Resources",
     width: 0,
     height: 0,
     maps: [
-      { name: "oil", bckgrnd: oil, layer: 1, show: true,checked: true }
+      { name: "Oil", bckgrnd: oil, layer: 1, show: true, checked: true },
+      { name: "Black Titanium", bckgrnd: blackTi, layer: 2, show: true, checked: true }
     ]
   };
 
@@ -42,36 +41,47 @@ class MapPage extends Component {
   // }
 
   handleChange = event => {
-    console.log(this.state.maps)
-    const {checked, name} = event.target;
-    console.log(checked);
-
-    // const {name, checked} = event.target;
-    // if (checked){
-    //   checked = false
-    // } else {
-    //   checked = true
-    // }
+    // console.log(this.state.maps)
+    const { checked, name } = event.target;
+    // console.log(checked);
     let index = 0;
     let mappings = this.state.maps
-    for(let i=0;i<mappings.length;i++){
-      if (mappings[i].name === name){
+    for (let i = 0; i < mappings.length; i++) {
+      if (mappings[i].name === name) {
         index = i;
       }
     }
     console.log(index);
-    let show = this.state.maps[index].show
+    // let show = this.state.maps[index].show
     let newStateBase = this.state;
     console.log(newStateBase.maps[index])
     newStateBase.maps[index].checked = checked;
     newStateBase.maps[index].show = checked;
     console.log(newStateBase.maps[index])
-    this.setState({state:newStateBase})
-    // this.setState({maps:[...this.state.maps[index].checked,checked]}, () => console.log(this.state))
-    // setTimeout(function(){console.log(this.state)},3000)
+    this.setState({ state: newStateBase })
   }
 
-  zoomIn = () => {
+  zoomIn = (event) => {
+    console.log(event.target.className)
+    let targetClass = event.target.className;
+    console.log(typeof targetClass)
+    let typeOfTarget = typeof targetClass;
+    console.log(typeOfTarget)
+    if (typeOfTarget === 'string') {
+      if (targetClass.indexOf('noZoom') === -1) {
+        let zoomedIn = this.state.zoomedIn;
+        console.log(zoomedIn);
+        if (zoomedIn) { zoomedIn = false; }
+        else { zoomedIn = true; }
+        this.setState({ zoomedIn: zoomedIn })
+      }
+    }
+
+
+
+  }
+
+  collapseMenu = () => {
 
   }
 
@@ -82,16 +92,16 @@ class MapPage extends Component {
       <Container fluid>
         <Row>
           <div >
-            <MapWrapper zoom={this.state.zoomedIn}>
+            <MapWrapper zoom={this.state.zoomedIn} onClick={this.zoomIn}>
               <MapProper zoom={this.state.zoomedIn} >
 
               </MapProper>
               {maps.map(item =>
                 item.show ? <MapLayer key={item.name} zoom={this.state.zoomedIn} map={item} ></MapLayer> : <div key={item.name}></div>
               )}
-              <ResoList text={this.state.text}>
+              <ResoList text={this.state.text} zoom={this.state.zoomedIn} onClick={this.collpaseMenu}>
                 {maps.map(item =>
-                  <Checkbox key={item.name} onChange={this.handleChange} type = 'checkbox' checked={item.checked} name={item.name} />
+                  <Checkbox key={item.name} onChange={this.handleChange} type='checkbox' checked={item.checked} name={item.name} />
                 )}
               </ResoList>
             </MapWrapper>

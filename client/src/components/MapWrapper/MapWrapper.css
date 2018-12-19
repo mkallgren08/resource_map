@@ -4,6 +4,7 @@
   width: 100vw;
   border: 20px solid black;
   position: relative;
+  cursor: zoom-in;
 }
 
 .MapWrapperZoom{
@@ -12,4 +13,5 @@
   width: 1920px;
   border: 20px solid black;
   position: relative;
+  cursor: zoom-in; 
 }
