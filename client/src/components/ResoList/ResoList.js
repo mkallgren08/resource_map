@@ -4,4 +4,5 @@ import "./ResoList.css"
 export const ResoList = props =>
   <div className="ResoList">
     <h1>{props.text}</h1>
+    {props.children}
   </div>;
