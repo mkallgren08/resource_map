@@ -1,7 +1,12 @@
 {
-  "main.css": "static/css/main.518a821b.css",
-  "main.css.map": "static/css/main.518a821b.css.map",
-  "main.js": "static/js/main.1794ff93.js",
-  "main.js.map": "static/js/main.1794ff93.js.map",
-  "static\\media\\basemap.jpg": "static/media/basemap.5433b7ac.jpg"
+  "main.css": "static/css/main.ea36f67e.css",
+  "main.css.map": "static/css/main.ea36f67e.css.map",
+  "main.js": "static/js/main.9645da6e.js",
+  "main.js.map": "static/js/main.9645da6e.js.map",
+  "static\\media\\basemap.jpg": "static/media/basemap.1950fac5.jpg",
+  "static\\media\\resmap-Al.png": "static/media/resmap-Al.805364c1.png",
+  "static\\media\\resmap-acid.png": "static/media/resmap-acid.2882e155.png",
+  "static\\media\\resmap-blackTi.png": "static/media/resmap-blackTi.5c12303a.png",
+  "static\\media\\resmap-coal.png": "static/media/resmap-coal.edde009c.png",
+  "static\\media\\resmap-oil.png": "static/media/resmap-oil.5e0a6b32.png"
 }
