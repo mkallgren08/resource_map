@@ -4,21 +4,30 @@ import { Checkbox } from "../../components/Form";
 import MapWrapper from "../../components/MapWrapper";
 import { MapProper, MapLayer } from "../../components/Maps";
 import { ResoList } from "../../components/ResoList";
-import oil from "./../../assets/images/resmap-oil.png";
-import blackTi from "../../assets/images/resmap-blackTi.png";
-import acid from "../../assets/images/resmap-acid.png";
+import images from "../../assets/images/index.js"
+
+const bckgrnd = images.backgrounds;
+const icons = images.icons;
+const colors=images.colors;
 
 class MapPage extends Component {
   state = {
-    zoomedIn: true,
+    zoomedIn: false,
     text: "Resources",
     width: 0,
     height: 0,
     collapsed: false,
     maps: [
-      { name: "Oil", bckgrnd: oil, layer: 1, show: true, checked: true },
-      { name: "Black Titanium", bckgrnd: blackTi, layer: 2, show: true, checked: true },
-      { name: "Acid", bckgrnd: acid, layer: 3, show: true, checked: true }
+      { name: "Oil", bckgrnd: bckgrnd.oil, icon: icons.oil, 
+        color: colors.oil, layer: 1, show: true, checked: true },
+      { name: "Black Titanium", bckgrnd: bckgrnd.blackTi, icon: icons.blackTi,
+        color: "black",layer: 2, show: true, checked: true },
+      { name: "Acid", bckgrnd: bckgrnd.acid, icon: icons.acid, 
+        color: colors.acid,layer: 3, show: true, checked: true },
+      { name: "Coal", bckgrnd: bckgrnd.coal, icon: icons.coal, 
+        color: colors.coal,layer: 4, show: true, checked: true },
+      { name: "Aluminium", bckgrnd: bckgrnd.alum, icon: icons.alum, 
+        color: colors.alum,layer: 5, show: true, checked: true },
     ]
   };
 
@@ -28,11 +37,12 @@ class MapPage extends Component {
   //   this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   // }
 
-  // componentDidMount() {
-  //   this.updateWindowDimensions();
-  //   console.log(this.state.width, this.state.height)
-  //   window.addEventListener('resize', this.updateWindowDimensions);
-  // }
+  componentDidMount() {
+    // this.updateWindowDimensions();
+    // console.log(this.state.width, this.state.height)
+    // window.addEventListener('resize', this.updateWindowDimensions);
+    // console.log(bckgrnd, icons);
+  }
 
   // componentWillUnmount() {
   //   window.removeEventListener('resize', this.updateWindowDimensions);
@@ -71,8 +81,8 @@ class MapPage extends Component {
     let typeOfTarget = typeof targetClass;
     console.log(typeOfTarget)
     if (typeOfTarget === 'string') {
-      if (targetClass.indexOf('collapse') > -1){
-        this.collapseMenu(this.state.collapsed)
+      if (targetClass.indexOf('toggleRes') > -1){
+        // this.collapseMenu(this.state.collapsed)
       }
       else if (targetClass.indexOf('noZoom') === -1) {
         let zoomedIn = this.state.zoomedIn;
@@ -82,13 +92,20 @@ class MapPage extends Component {
         this.setState({ zoomedIn: zoomedIn })
       }
     } else if (typeOfTarget === 'object'){
-      this.collapseMenu(this.state.collapsed);
+      // this.collapseMenu(this.state.collapsed);
     }
   }
 
   collapseMenu = (collapsed) => {
-    console.log(collapsed)
+    let currentState = this.state.collapsed;
+    let newState=true;
+    if (currentState === true){
+      newState=false;
+    }
+    console.log(this.state.collapsed)
+    console.log(newState)
     console.log("Collapse function called")
+    this.setState({collapsed:newState})
   }
 
   render() {
@@ -105,9 +122,17 @@ class MapPage extends Component {
               {maps.map(item =>
                 item.show ? <MapLayer key={item.name} zoom={this.state.zoomedIn} map={item} ></MapLayer> : <div key={item.name}></div>
               )}
-              <ResoList text={this.state.text} onClick={this.collpaseMenu} collpased={this.state.collapsed}>
+              <ResoList text={this.state.text} collapsed={this.state.collapsed} onClick={this.collapseMenu}>
                 {maps.map(item =>
-                  <Checkbox key={item.name} onChange={this.handleChange} type='checkbox' checked={item.checked} name={item.name} />
+                  <Checkbox 
+                    key={item.name} 
+                    onChange={this.handleChange} 
+                    type='checkbox'
+                    checked={item.checked} 
+                    name={item.name}
+                    color={item.color}
+                    icon={item.icon} 
+                  />
                 )}
               </ResoList>
             </MapWrapper>

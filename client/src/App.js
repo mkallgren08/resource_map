@@ -5,9 +5,9 @@ import MapPage from "./pages/MapPage"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIgloo, faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faIgloo, faAngleDoubleLeft,faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faIgloo,faAngleDoubleLeft)
+library.add(faIgloo,faAngleDoubleLeft,faAngleDoubleRight)
 
 const App = () => (
   <Router>

@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Racing+Sans+One");
+
+
 .MapWrapperDef{
   background: rgba(0, 0, 0, 0.9);
   height: 100vh;
   width: 100vw;
-  border: 20px solid black;
+  /* border: 20px solid black; */
   position: relative;
   cursor: zoom-in;
 }
@@ -11,7 +14,11 @@
   background: rgba(0, 0, 0, 0.9);
   height: 1915px;
   width: 1920px;
-  border: 20px solid black;
+  /* border: 20px solid black; */
   position: relative;
   cursor: zoom-in; 
+}
+
+.mapWrapper{
+  font-family: 'Racing Sans One', cursive;
 }
