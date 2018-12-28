@@ -17,6 +17,7 @@ class MapPage extends Component {
     width: 0,
     height: 0,
     collapsed: false,
+    showAll: true,
     maps: [
       { name: "Oil", bckgrnd: bckgrnd.oil, icon: icons.oil, 
         color: colors.oil, layer: 1, show: true, checked: true },
@@ -28,6 +29,10 @@ class MapPage extends Component {
         color: colors.coal,layer: 4, show: true, checked: true },
       { name: "Aluminium", bckgrnd: bckgrnd.alum, icon: icons.alum, 
         color: colors.alum,layer: 5, show: true, checked: true },
+      { name: "Concrete", bckgrnd: bckgrnd.concrete, icon: icons.concrete, 
+        color: colors.concrete,layer: 6, show: true, checked: true },
+      { name: "Copper", bckgrnd: bckgrnd.copper, icon: icons.copper, 
+        color: colors.copper,layer: 7, show: true, checked: true },
     ]
   };
 
@@ -108,6 +113,29 @@ class MapPage extends Component {
     this.setState({collapsed:newState})
   }
 
+  toggleAll = () => {
+    console.log("toggle all function called!")
+    let oldState = this.state.showAll;
+    let newState = true;
+    if (oldState === false){
+      newState = true;
+      console.log(newState)
+    } else if (oldState === true){
+      newState = false
+      console.log(newState)
+    }
+    let modMaps = this.state.maps;
+
+    modMaps.forEach(item => {
+      item.show = newState;
+      item.checked = newState;
+    })
+
+    console.log(modMaps)
+
+    this.setState({maps: modMaps, showAll: newState})
+  }
+
   render() {
     const maps = this.state.maps;
 
@@ -122,7 +150,13 @@ class MapPage extends Component {
               {maps.map(item =>
                 item.show ? <MapLayer key={item.name} zoom={this.state.zoomedIn} map={item} ></MapLayer> : <div key={item.name}></div>
               )}
-              <ResoList text={this.state.text} collapsed={this.state.collapsed} onClick={this.collapseMenu}>
+              <ResoList 
+                text={this.state.text} 
+                collapsed={this.state.collapsed} 
+                onClick={this.collapseMenu} 
+                toggleAll={this.toggleAll} 
+                showAll={this.state.showAll}
+              >
                 {maps.map(item =>
                   <Checkbox 
                     key={item.name} 

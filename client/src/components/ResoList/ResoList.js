@@ -1,6 +1,8 @@
 import React from "react";
-import "./ResoList.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { Checkbox } from "./../Form"
+
+import "./ResoList.css";
 
 export const ResoList = props =>
 
@@ -40,15 +42,16 @@ export const ResoList = props =>
         <div className="noZoom">
           <div className="noZoom resource-wrapper">
             <div className="noZoom resource-header">
-              <h2 className="noZoom">{props.text}
-                {/* <button className="noZoom collapseBtn" onClick={props.onClick} >
-          <FontAwesomeIcon 
-            className= "noZoom faIcon" 
-            icon="angle-double-left"
-          />
-        </button> */}
-              </h2>
-
+              <h2 className="noZoom">{props.text}</h2>
+              <div className="noZoom toggleWrapper">
+                <button className="noZoom toggleBtn" onClick={props.toggleAll}>
+                  {props.showAll ? (
+                    <span className="noZoom" >Hide All</span>
+                  ) : (
+                      <span className="noZoom" >Show All</span>
+                    )}
+                </button>
+              </div>
             </div>
             <div className="noZoom resource-body">
               {props.children}

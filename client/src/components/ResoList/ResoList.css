@@ -35,6 +35,8 @@
   
 }
 
+
+
 .toggleResList{
   width: 22px;
   position: absolute;
@@ -65,9 +67,24 @@
   right: 0px;
 }
 
-.resource-header > h2 {
-  margin-top: 0px;
-  margin-bottom: 15px;
+.resource-header {
+  margin-bottom: 7px;
+  padding-bottom: 5px;
+  border-bottom: 2px groove rgba(102, 102, 102, 0.7);
 }
 
+.resource-header > h2 {
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
 
+.toggleWrapper{
+  display: flex;
+  flex-direction: row;
+}
+
+.toggleBtn{
+  flex-grow: 1;
+  border: 2px groove darkgrey;
+  border-radius: 15px;
+}
