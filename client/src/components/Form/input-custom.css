@@ -40,7 +40,7 @@
 }
 
 .resLabel{
-  font-size: 18px;
+  font-size: 15px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -50,12 +50,13 @@
   /* font-family: 'Racing Sans One', cursive; */
   /* font-family: 'Vast Shadow', cursive; */
   
-  
-  /* text-shadow: 
-  	-1px -1px 0 #555,
-    1px -1px 0 #555,
-    -1px 1px 0 #555,
-    1px 1px 0 #555; */
-  
+}
+
+.textShadow{
+  text-shadow: 
+  -1px -1px 0 #222222,
+  1px -1px 0 #222222,
+  -1px 1px 0 #222222,
+  1px 1px 0 #222222;
 }
 

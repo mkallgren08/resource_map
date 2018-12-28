@@ -19,20 +19,24 @@ class MapPage extends Component {
     collapsed: false,
     showAll: true,
     maps: [
-      { name: "Oil", bckgrnd: bckgrnd.oil, icon: icons.oil, 
-        color: colors.oil, layer: 1, show: true, checked: true },
-      { name: "Black Titanium", bckgrnd: bckgrnd.blackTi, icon: icons.blackTi,
-        color: "black",layer: 2, show: true, checked: true },
       { name: "Acid", bckgrnd: bckgrnd.acid, icon: icons.acid, 
-        color: colors.acid,layer: 3, show: true, checked: true },
-      { name: "Coal", bckgrnd: bckgrnd.coal, icon: icons.coal, 
-        color: colors.coal,layer: 4, show: true, checked: true },
+        color: colors.acid,layer: 3, show: true, checked: true, shadowed: true },
       { name: "Aluminium", bckgrnd: bckgrnd.alum, icon: icons.alum, 
-        color: colors.alum,layer: 5, show: true, checked: true },
+        color: colors.alum,layer: 5, show: true, checked: true, shadowed: true },
+      { name: "Black Titanium", bckgrnd: bckgrnd.blackTi, icon: icons.blackTi,
+        color: "black",layer: 2, show: true, checked: true , shadowed: false},
+      { name: "Coal", bckgrnd: bckgrnd.coal, icon: icons.coal, 
+        color: colors.coal,layer: 4, show: true, checked: true, shadowed: true },
       { name: "Concrete", bckgrnd: bckgrnd.concrete, icon: icons.concrete, 
-        color: colors.concrete,layer: 6, show: true, checked: true },
+        color: colors.concrete,layer: 6, show: true, checked: true, shadowed: true },
       { name: "Copper", bckgrnd: bckgrnd.copper, icon: icons.copper, 
-        color: colors.copper,layer: 7, show: true, checked: true },
+        color: colors.copper,layer: 7, show: true, checked: true, shadowed: true },
+      { name: "Crystal", bckgrnd: bckgrnd.crystal, icon: icons.crystal, 
+        color: colors.crystal,layer: 8, show: true, checked: true, shadowed: true },
+      { name: "Nuclear Material", bckgrnd: bckgrnd.uranium, icon: icons.uranium, 
+        color: colors.uranium,layer: 9, show: true, checked: true, shadowed: true },
+      { name: "Oil", bckgrnd: bckgrnd.oil, icon: icons.oil, 
+        color: colors.oil, layer: 1, show: true, checked: true, shadowed: false },
     ]
   };
 
@@ -165,7 +169,8 @@ class MapPage extends Component {
                     checked={item.checked} 
                     name={item.name}
                     color={item.color}
-                    icon={item.icon} 
+                    icon={item.icon}
+                    shadowed={item.shadowed} 
                   />
                 )}
               </ResoList>

@@ -6,6 +6,8 @@ import coalBckgrnd from "./resmap-coal.png";
 import oilBckgrnd from "./resmap-oil.png";
 import conBckgrnd from "./resmap-concrete.png";
 import CuBckgrnd from "./resmap-Cu.png";
+import crystalBckgrnd from "./resmap-crystal.png";
+import uraniumBckgrnd from "./resmap-U.png";
 
 
 // Icons
@@ -15,7 +17,9 @@ import blackTiIcon from "./icon-blackTi.png";
 import coalIcon from "./icon-coal.png";
 import oilIcon from "./icon-oil.png";
 import conIcon from "./icon-concrete.png";
-import CuIcon from "./icon-Cu.png"
+import CuIcon from "./icon-Cu.png";
+import crystalIcon from "./icon-crystal.png";
+import uraniumIcon from "./icon-U.png";
 
 
 const images = {
@@ -27,6 +31,8 @@ const images = {
     oil: oilBckgrnd,
     concrete: conBckgrnd,
     copper: CuBckgrnd,
+    crystal: crystalBckgrnd,
+    uranium: uraniumBckgrnd,
   },
   icons:{
     acid: acidIcon,
@@ -36,6 +42,8 @@ const images = {
     oil: oilIcon,
     concrete: conIcon,
     copper: CuIcon,
+    crystal: crystalIcon,
+    uranium: uraniumIcon,
   },
   colors:{
     acid: "#6ABD49",
@@ -45,6 +53,8 @@ const images = {
     oil: "#0000FF",
     concrete: "#CFCFCF",
     copper: "#ED8721",
+    crystal: "#FF99D8",
+    uranium: "#00FF04",
   }
 }
 
