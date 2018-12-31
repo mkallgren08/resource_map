@@ -4,7 +4,7 @@ import "./input-custom.css"
 export const Checkbox = props =>
   <div className="form-group checkbox-group noZoom">
     <span className="noZoom labelWrap">
-      {props.shadowed ? (
+      {props['data-shadowed'] ? (
         <label htmlFor={props.name} className="noZoom resLabel textShadow"
           style={{ color: props.color }}>{props.name}</label>
       ) : (

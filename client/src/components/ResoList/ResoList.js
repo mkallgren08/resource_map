@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { Checkbox } from "./../Form"
+import { Input } from "./../Form"
 
 import "./ResoList.css";
 
@@ -51,6 +51,15 @@ export const ResoList = props =>
                       <span className="noZoom" >Show All</span>
                     )}
                 </button>
+              </div>
+              <div>
+                <Input 
+                  className="noZoom"
+                  placeholder="Filter by..."
+                  onChange={props.handleInputChange}
+                  value={props.filter}
+                  name="filterterm"
+                />
               </div>
             </div>
             <div className="noZoom resource-body">

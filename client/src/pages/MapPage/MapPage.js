@@ -8,35 +8,58 @@ import images from "../../assets/images/index.js"
 
 const bckgrnd = images.backgrounds;
 const icons = images.icons;
-const colors=images.colors;
+const colors = images.colors;
 
 class MapPage extends Component {
   state = {
     zoomedIn: false,
     text: "Resources",
+    filterterm: "",
     width: 0,
     height: 0,
     collapsed: false,
     showAll: true,
     maps: [
-      { name: "Acid", bckgrnd: bckgrnd.acid, icon: icons.acid, 
-        color: colors.acid,layer: 3, show: true, checked: true, shadowed: true },
-      { name: "Aluminium", bckgrnd: bckgrnd.alum, icon: icons.alum, 
-        color: colors.alum,layer: 5, show: true, checked: true, shadowed: true },
-      { name: "Black Titanium", bckgrnd: bckgrnd.blackTi, icon: icons.blackTi,
-        color: "black",layer: 2, show: true, checked: true , shadowed: false},
-      { name: "Coal", bckgrnd: bckgrnd.coal, icon: icons.coal, 
-        color: colors.coal,layer: 4, show: true, checked: true, shadowed: true },
-      { name: "Concrete", bckgrnd: bckgrnd.concrete, icon: icons.concrete, 
-        color: colors.concrete,layer: 6, show: true, checked: true, shadowed: true },
-      { name: "Copper", bckgrnd: bckgrnd.copper, icon: icons.copper, 
-        color: colors.copper,layer: 7, show: true, checked: true, shadowed: true },
-      { name: "Crystal", bckgrnd: bckgrnd.crystal, icon: icons.crystal, 
-        color: colors.crystal,layer: 8, show: true, checked: true, shadowed: true },
-      { name: "Nuclear Material", bckgrnd: bckgrnd.uranium, icon: icons.uranium, 
-        color: colors.uranium,layer: 9, show: true, checked: true, shadowed: true },
-      { name: "Oil", bckgrnd: bckgrnd.oil, icon: icons.oil, 
-        color: colors.oil, layer: 1, show: true, checked: true, shadowed: false },
+      {
+        name: "Acid", bckgrnd: bckgrnd.acid, icon: icons.acid,
+        color: colors.acid, layer: 3, show: true, checked: true, shadowed: true
+      },
+      {
+        name: "Aluminium", bckgrnd: bckgrnd.alum, icon: icons.alum,
+        color: colors.alum, layer: 5, show: true, checked: true, shadowed: true
+      },
+      {
+        name: "Black Titanium", bckgrnd: bckgrnd.blackTi, icon: icons.blackTi,
+        color: "black", layer: 2, show: true, checked: true, shadowed: false
+      },
+      {
+        name: "Coal", bckgrnd: bckgrnd.coal, icon: icons.coal,
+        color: colors.coal, layer: 4, show: true, checked: true, shadowed: true
+      },
+      {
+        name: "Concrete", bckgrnd: bckgrnd.concrete, icon: icons.concrete,
+        color: colors.concrete, layer: 6, show: true, checked: true, shadowed: true
+      },
+      {
+        name: "Copper", bckgrnd: bckgrnd.copper, icon: icons.copper,
+        color: colors.copper, layer: 7, show: true, checked: true, shadowed: true
+      },
+      {
+        name: "Crystal", bckgrnd: bckgrnd.crystal, icon: icons.crystal,
+        color: colors.crystal, layer: 8, show: true, checked: true, shadowed: true
+      },
+      {
+        name: "Fertilizer", bckgrnd: bckgrnd.fertilizer, icon: icons.fertilizer,
+        color: colors.fertilizer, layer: 10, show: true, checked: true, shadowed: false
+      },
+      {
+        name: "Nuclear Material", bckgrnd: bckgrnd.uranium, icon: icons.uranium,
+        color: colors.uranium, layer: 9, show: true, checked: true, shadowed: true
+      },
+      {
+        name: "Oil", bckgrnd: bckgrnd.oil, icon: icons.oil,
+        color: colors.oil, layer: 1, show: true, checked: true, shadowed: false
+      },
     ]
   };
 
@@ -90,7 +113,7 @@ class MapPage extends Component {
     let typeOfTarget = typeof targetClass;
     console.log(typeOfTarget)
     if (typeOfTarget === 'string') {
-      if (targetClass.indexOf('toggleRes') > -1){
+      if (targetClass.indexOf('toggleRes') > -1) {
         // this.collapseMenu(this.state.collapsed)
       }
       else if (targetClass.indexOf('noZoom') === -1) {
@@ -100,31 +123,31 @@ class MapPage extends Component {
         else { zoomedIn = true; }
         this.setState({ zoomedIn: zoomedIn })
       }
-    } else if (typeOfTarget === 'object'){
+    } else if (typeOfTarget === 'object') {
       // this.collapseMenu(this.state.collapsed);
     }
   }
 
   collapseMenu = (collapsed) => {
     let currentState = this.state.collapsed;
-    let newState=true;
-    if (currentState === true){
-      newState=false;
+    let newState = true;
+    if (currentState === true) {
+      newState = false;
     }
     console.log(this.state.collapsed)
     console.log(newState)
     console.log("Collapse function called")
-    this.setState({collapsed:newState})
+    this.setState({ collapsed: newState })
   }
 
   toggleAll = () => {
     console.log("toggle all function called!")
     let oldState = this.state.showAll;
     let newState = true;
-    if (oldState === false){
+    if (oldState === false) {
       newState = true;
       console.log(newState)
-    } else if (oldState === true){
+    } else if (oldState === true) {
       newState = false
       console.log(newState)
     }
@@ -137,11 +160,35 @@ class MapPage extends Component {
 
     console.log(modMaps)
 
-    this.setState({maps: modMaps, showAll: newState})
+    this.setState({ maps: modMaps, showAll: newState })
   }
+
+  // handle form input
+  handleInputChange = event => {
+    // Destructure the name and value properties off of event.target
+    // Update the appropriate state
+    const { name, value } = event.target;
+    let modMaps = this.state.maps;
+    // console.log(value)
+    modMaps.forEach(item => {
+      if(item.name.toLowerCase().indexOf(value.toLowerCase()) > -1){
+        item.show = true;
+        item.checked = true;
+      } else {
+        item.show = false;
+        item.checked = false;
+      }
+    })
+    // console.log(modMaps);
+    this.setState({
+      maps: modMaps,
+      [name]: value
+    });
+  };
 
   render() {
     const maps = this.state.maps;
+    // console.log(this.state.filterterm)
 
     return (
       <Container fluid>
@@ -152,25 +199,29 @@ class MapPage extends Component {
 
               </MapProper>
               {maps.map(item =>
-                item.show ? <MapLayer key={item.name} zoom={this.state.zoomedIn} map={item} ></MapLayer> : <div key={item.name}></div>
+                item.show ? (
+                  <MapLayer key={item.name} zoom={this.state.zoomedIn} map={item} ></MapLayer>
+                ) : null
               )}
-              <ResoList 
-                text={this.state.text} 
-                collapsed={this.state.collapsed} 
-                onClick={this.collapseMenu} 
-                toggleAll={this.toggleAll} 
+              <ResoList
+                text={this.state.text}
+                filter={this.state.filterterm}
+                collapsed={this.state.collapsed}
+                onClick={this.collapseMenu}
+                handleInputChange={this.handleInputChange}
+                toggleAll={this.toggleAll}
                 showAll={this.state.showAll}
               >
                 {maps.map(item =>
-                  <Checkbox 
-                    key={item.name} 
-                    onChange={this.handleChange} 
+                  <Checkbox
+                    key={item.name}
+                    onChange={this.handleChange}
                     type='checkbox'
-                    checked={item.checked} 
+                    checked={item.checked}
                     name={item.name}
                     color={item.color}
                     icon={item.icon}
-                    shadowed={item.shadowed} 
+                    data-shadowed={item.shadowed}
                   />
                 )}
               </ResoList>
