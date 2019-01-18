@@ -4,13 +4,11 @@ import { Checkbox } from "../../components/Form";
 import MapWrapper from "../../components/MapWrapper";
 import { MapProper, MapLayer } from "../../components/Maps";
 import { ResoList } from "../../components/ResoList";
-import images from "../../assets/images/index.js"
-
-const bckgrnd = images.backgrounds;
-const icons = images.icons;
-const colors = images.colors;
+// import images from "../../assets/images/index.js"
+import images2 from "../../assets/images/testIndex.js"
 
 class MapPage extends Component {
+
   state = {
     zoomedIn: false,
     text: "Resources",
@@ -19,99 +17,75 @@ class MapPage extends Component {
     height: 0,
     collapsed: false,
     showAll: true,
-    maps: [
-      {
-        name: "Acid", bckgrnd: bckgrnd.acid, icon: icons.acid,
-        color: colors.acid, layer: 3, show: true, checked: true, shadowed: true
-      },
-      {
-        name: "Aluminium", bckgrnd: bckgrnd.alum, icon: icons.alum,
-        color: colors.alum, layer: 5, show: true, checked: true, shadowed: true
-      },
-      {
-        name: "Black Titanium", bckgrnd: bckgrnd.blackTi, icon: icons.blackTi,
-        color: "black", layer: 2, show: true, checked: true, shadowed: false
-      },
-      {
-        name: "Coal", bckgrnd: bckgrnd.coal, icon: icons.coal,
-        color: colors.coal, layer: 4, show: true, checked: true, shadowed: true
-      },
-      {
-        name: "Concrete", bckgrnd: bckgrnd.concrete, icon: icons.concrete,
-        color: colors.concrete, layer: 6, show: true, checked: true, shadowed: true
-      },
-      {
-        name: "Copper", bckgrnd: bckgrnd.copper, icon: icons.copper,
-        color: colors.copper, layer: 7, show: true, checked: true, shadowed: true
-      },
-      {
-        name: "Crystal", bckgrnd: bckgrnd.crystal, icon: icons.crystal,
-        color: colors.crystal, layer: 8, show: true, checked: true, shadowed: true
-      },
-      {
-        name: "Fertilizer", bckgrnd: bckgrnd.fertilizer, icon: icons.fertilizer,
-        color: colors.fertilizer, layer: 10, show: true, checked: true, shadowed: false
-      },
-      {
-        name: "Nuclear Material", bckgrnd: bckgrnd.uranium, icon: icons.uranium,
-        color: colors.uranium, layer: 9, show: true, checked: true, shadowed: true
-      },
-      {
-        name: "Oil", bckgrnd: bckgrnd.oil, icon: icons.oil,
-        color: colors.oil, layer: 1, show: true, checked: true, shadowed: false
-      },
-    ]
+    maps: []
   };
 
   // constructor(props) {
   //   super(props);
-  //   this.state = { width: 0, height: 0 };
-  //   this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   // }
 
   componentDidMount() {
-    // this.updateWindowDimensions();
-    // console.log(this.state.width, this.state.height)
-    // window.addEventListener('resize', this.updateWindowDimensions);
-    // console.log(bckgrnd, icons);
+    this.loadMaps()
   }
 
   // componentWillUnmount() {
   //   window.removeEventListener('resize', this.updateWindowDimensions);
   // }
 
-  // updateWindowDimensions() {
-  //   this.setState({ width: window.innerWidth, height: window.innerHeight });
-  //   console.log(this.state.width, this.state.height)
-  // }
+  loadMaps () {
+    // console.log(images2)
+    let maps = [], counter = 1;
+    let MapBase = function (item) {
+      this.name=item.name,
+      this.bckgrnd= item.bckgrnd,
+      this.icon= item.icon,
+      this.color= item.color
+      this.show =true,
+      this.checked =true
+    };
+    images2.forEach(function(val){
+      let base = new MapBase(val)
+      base.layer = counter;
+      if ( base.name !== 'Black Titanium' && base.name !== 'Fertilizer' && base.name !== 'Oil') {
+            base.shadowed = true; 
+      } else {
+        base.shadowed = false
+      }
+      counter++; maps.push(base)
+
+    });
+    // console.log(oldMaps)
+    // console.log(maps)
+    // console.log(maps[0].name)
+    this.setState({maps: maps})
+  }
+
+
 
   handleChange = event => {
     // console.log(this.state.maps)
     const { checked, name } = event.target;
     // console.log(checked);
-    let index = 0;
-    let mappings = this.state.maps
+    let index = 0, mappings = this.state.maps
     for (let i = 0; i < mappings.length; i++) {
       if (mappings[i].name === name) {
         index = i;
       }
     }
-    console.log(index);
-    // let show = this.state.maps[index].show
     let newStateBase = this.state;
-    console.log(newStateBase.maps[index])
+    // console.log(newStateBase.maps[index])
     newStateBase.maps[index].checked = checked;
     newStateBase.maps[index].show = checked;
-    console.log(newStateBase.maps[index])
+    // console.log(newStateBase.maps[index])
     this.setState({ state: newStateBase })
   }
 
   zoomIn = (event) => {
-    console.log(event.target.className)
+    // console.log(event.target.className)
     let targetClass = event.target.className;
-    console.log(typeof targetClass)
+    // console.log(typeof targetClass)
     let typeOfTarget = typeof targetClass;
-    console.log(typeOfTarget)
+    // console.log(typeOfTarget)
     if (typeOfTarget === 'string') {
       if (targetClass.indexOf('toggleRes') > -1) {
         // this.collapseMenu(this.state.collapsed)
@@ -128,28 +102,22 @@ class MapPage extends Component {
     }
   }
 
-  collapseMenu = (collapsed) => {
-    let currentState = this.state.collapsed;
-    let newState = true;
-    if (currentState === true) {
-      newState = false;
-    }
-    console.log(this.state.collapsed)
-    console.log(newState)
-    console.log("Collapse function called")
+  collapseMenu = () => {
+    let currentState = this.state.collapsed, newState = true;
+    if (currentState === true) { newState = false; } // Toggles between collapsed and expanded 
+    console.log(this.state.collapsed, newState, "Collapse function called")
     this.setState({ collapsed: newState })
   }
 
-  toggleAll = () => {
-    console.log("toggle all function called!")
-    let oldState = this.state.showAll;
-    let newState = true;
+  toggleAll = () => { //Hides or shows all available resources
+    // console.log("toggle all function called!")
+    let oldState = this.state.showAll, newState = true;
     if (oldState === false) {
       newState = true;
-      console.log(newState)
+      // console.log(newState)
     } else if (oldState === true) {
       newState = false
-      console.log(newState)
+      // console.log(newState)
     }
     let modMaps = this.state.maps;
 
@@ -157,9 +125,7 @@ class MapPage extends Component {
       item.show = newState;
       item.checked = newState;
     })
-
-    console.log(modMaps)
-
+    // console.log(modMaps)
     this.setState({ maps: modMaps, showAll: newState })
   }
 
@@ -172,18 +138,13 @@ class MapPage extends Component {
     // console.log(value)
     modMaps.forEach(item => {
       if(item.name.toLowerCase().indexOf(value.toLowerCase()) > -1){
-        item.show = true;
-        item.checked = true;
+        item.show = true; item.checked = true;
       } else {
-        item.show = false;
-        item.checked = false;
+        item.show = false; item.checked = false;
       }
     })
     // console.log(modMaps);
-    this.setState({
-      maps: modMaps,
-      [name]: value
-    });
+    this.setState({ maps: modMaps, [name]: value });
   };
 
   render() {
@@ -227,7 +188,6 @@ class MapPage extends Component {
               </ResoList>
             </MapWrapper>
           </div>
-
         </Row>
       </Container>
     );

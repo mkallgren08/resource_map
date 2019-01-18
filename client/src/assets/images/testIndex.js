@@ -33,61 +33,22 @@ import uraniumIcon from "./icon-U.png";
 import oilIcon from "./icon-oil.png";
 // import AgIcon from "./icon-Ag.png";
 
-
-const images = {
-  backgrounds:{
-    acid: acidBckgrnd,
-    alum: alumBckgrnd,
-    blackTi: blackTiBckgrnd,
-    coal: coalBckgrnd,
-    concrete: conBckgrnd,
-    copper: CuBckgrnd,
-    crystal: crystalBckgrnd,
-    fertilizer: fertilizerBckgrnd,
-    gold: AuBckgrnd,
-    // iron: FeBckgrnd,
-    // junk: junkBckgrnd,
-    // lead: PbBckgrnd,
-    uranium: uraniumBckgrnd,
-    oil: oilBckgrnd,
-    // silver: AgBckgrnd
-    
-  },
-  icons:{
-    acid: acidIcon,
-    alum: alumIcon,
-    blackTi: blackTiIcon,
-    coal: coalIcon,
-    concrete: conIcon,
-    copper: CuIcon,
-    crystal: crystalIcon,
-    fertilizer: fertilizerIcon,
-    gold: AuIcon,
-    // iron: FeIcon,
-    // junk: junkIcon,
-    // lead: PbIcon,
-    uranium: uraniumIcon,
-    oil: oilIcon,
-    // silver: AgIcon
-  },
-  colors:{
-    acid: "#6ABD49", // 106,189,73
-    alum: "#5CB3FF", // 92,179,255
-    blackTi: "#524B4B", // 82,75,75
-    coal: "#CC3F02", // 204,63,2
-    concrete: "#CFCFCF", // 207,207,207
-    copper: "#ED8721", // 237,135,33
-    crystal: "#FF99D8", // 255,153,216
-    fertilizer: "#633200", // 99,50,0
-    gold: "#FFE54F", // 255,229,79
-    // iron: , 
-    // junk: ,
-    // lead: , 
-    uranium: "#00FF04", // 0,255,4
-    oil: "#0000FF", // 0,0,255
-    // silver: 
-
-  }
-}
+const images = [
+  {name: "Acid", bckgrnd: acidBckgrnd, icon: acidIcon, color: "#6ABD49"},
+  {name: "Aluminium", bckgrnd:alumBckgrnd, icon: alumIcon, color: "#5CB3FF"},
+  {name: "Black Titanium", bckgrnd:blackTiBckgrnd,icon:blackTiIcon,color: "#000000"},
+  {name: "Coal", bckgrnd: coalBckgrnd, icon: coalIcon, color: "#CC3F02"},
+  {name: "Concrete", bckgrnd:conBckgrnd,icon:conIcon, color: "#CFCFCF"},
+  {name:"Copper",bckgrnd:CuBckgrnd,icon:CuIcon,color:"#ED8721"},
+  {name: "Crystal",bckgrnd:crystalBckgrnd,icon:crystalIcon, color: "#FF99D8"},
+  {name: "Fertilizer",bckgrnd:fertilizerBckgrnd,icon:fertilizerIcon,color:"#633200"},
+  {name:"Gold",bckgrnd:AuBckgrnd,icon:AuIcon,color:"#FFE54F"},
+  // {name: "Iron",bckgrnd: ,icon: , color:""},
+  // {name: "Junk",bckgrnd: ,icon: , color:""},
+  // {name: "Lead" ,bckgrnd: ,icon: , color:""},
+  {name: "Oil",bckgrnd: oilBckgrnd,icon:oilIcon , color:"#0000FF"},
+  // {name: "Silver",bckgrnd: ,icon: , color:""},
+  {name: "Uranium",bckgrnd: uraniumBckgrnd,icon: uraniumIcon, color:"#00FF04"},
+]
 
 export default images;
