@@ -5,7 +5,7 @@ import MapWrapper from "../../components/MapWrapper";
 import { MapProper, MapLayer } from "../../components/Maps";
 import { ResoList } from "../../components/ResoList";
 // import images from "../../assets/images/index.js"
-import images2 from "../../assets/images/testIndex.js"
+import images from "../../assets/images/testIndex.js"
 
 class MapPage extends Component {
 
@@ -43,7 +43,7 @@ class MapPage extends Component {
       this.show =true,
       this.checked =true
     };
-    images2.forEach(function(val){
+    images.forEach(function(val){
       let base = new MapBase(val)
       base.layer = counter;
       if ( base.name !== 'Black Titanium' && base.name !== 'Fertilizer' && base.name !== 'Oil') {
